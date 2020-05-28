@@ -1,0 +1,23 @@
+cc_library {
+    name: "libzstd",
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.adbd",
+    ],
+    visibility: [
+        "//bootable/recovery:__subpackages__",
+        "//system/core/adb:__subpackages__",
+    ],
+    recovery_available: true,
+    vendor_available: true,
+    host_supported: true,
+    target: {
+        windows: {
+            enabled: true,
+        },
+    },
+    srcs: ["lib/*/*.c"],
+    cflags: ["-Wall", "-Werror"],
+    local_include_dirs: ["lib/common"],
+    export_include_dirs: ["lib"],
+}
