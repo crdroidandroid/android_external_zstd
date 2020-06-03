@@ -1,7 +1,5 @@
 name: "zstd"
-description:
-    "Zstandard - Fast real-time compression algorithm"
-
+description: "Zstandard - Fast real-time compression algorithm"
 third_party {
   url {
     type: HOMEPAGE
@@ -11,6 +9,10 @@ third_party {
     type: GIT
     value: "https://github.com/facebook/zstd"
   }
-  version: "1.4.5"
-  last_upgrade_date { year: 2020 month: 5 day: 27}
+  version: "v1.4.5"
+  last_upgrade_date {
+    year: 2020
+    month: 6
+    day: 3
+  }
 }
