@@ -7,7 +7,7 @@ cc_library {
     visibility: [
         "//bootable/recovery:__subpackages__",
         "//system/core/adb:__subpackages__",
-        "//system/core/logd:__subpackages__",
+        "//system/logging/logd:__subpackages__",
     ],
     recovery_available: true,
     vendor_available: true,
