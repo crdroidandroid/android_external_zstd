@@ -22,3 +22,155 @@ cc_library {
     local_include_dirs: ["lib/common"],
     export_include_dirs: ["lib"],
 }
+
+cc_defaults {
+    name: "zstd_fuzz_defaults",
+    static_libs: [
+        "libzstd",
+    ],
+    srcs: [
+        "tests/fuzz/fuzz_data_producer.c",
+        "tests/fuzz/fuzz_helpers.c",
+        "tests/fuzz/zstd_helpers.c",
+    ],
+    local_include_dirs: [
+        "lib/common",
+        "lib/dictBuilder",
+        "tests/fuzz",
+    ],
+    cflags: [
+        "-Wno-error",
+        "-Wno-pointer-arith",
+    ],
+    host_supported: true,
+}
+
+cc_fuzz {
+    name: "zstd_block_decompress_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/block_decompress.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_block_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/block_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_dict_decompress_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/dictionary_decompress.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_dict_loader_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/dictionary_loader.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_dict_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/dictionary_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_dict_stream_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/dictionary_stream_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_raw_dict_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/raw_dictionary_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_simple_compress_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/simple_compress.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_simple_decompress_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/simple_decompress.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_simple_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/simple_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_stream_decompress_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/stream_decompress.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_stream_round_trip_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/stream_round_trip.c",
+    ],
+}
+
+cc_fuzz {
+    name: "zstd_frame_info_fuzzer",
+    defaults: [
+        "zstd_fuzz_defaults",
+    ],
+    srcs: [
+        "tests/fuzz/zstd_frame_info.c",
+    ],
+}
