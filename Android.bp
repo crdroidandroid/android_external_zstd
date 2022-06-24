@@ -43,6 +43,7 @@ license {
 
 cc_library {
     name: "libzstd",
+    min_sdk_version: "apex_inherit",
     apex_available: [
         "//apex_available:platform",
         "com.android.adbd",
